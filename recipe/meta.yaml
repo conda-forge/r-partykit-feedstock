@@ -1,5 +1,4 @@
-{% set version = '1.2-0' %}
-
+{% set version = '1.2-2' %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,13 +9,13 @@ package:
 source:
   fn: partykit_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/partykit_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/partykit/partykit_{{ version }}.tar.gz
-  sha256: c64cdbecc7235856b0faeecf50bf1643107be46795cb6ba8908ed89d39e8afff
+    - {{ cran_mirror }}/src/contrib/partykit_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/partykit/partykit_{{ version }}.tar.gz
+  sha256: 6f753f617a9672f0b90d50c40c69631162806a6b28a9cae20370960092cb1f85
 
 build:
   merge_build_host: True  # [win]
-  number: 1
+  number: 0
   skip: true  # [win32]
   rpaths:
     - lib/R/lib/
@@ -24,20 +23,24 @@ build:
 
 requirements:
   build:
-    - posix                # [win]
-    - {{ compiler('c') }}        # [unix]
-    - {{ compiler('m2w64_c') }}  # [win]
+    - {{ compiler('c') }}        # [not win]
+    - {{native}}toolchain        # [win]
+    - {{posix}}filesystem        # [win]
+    - {{posix}}make
+    - {{posix}}sed               # [win]
+    - {{posix}}coreutils         # [win]
+    - {{posix}}zip               # [win]
   host:
-    - r-base          # r-libcoin requires
+    - r-base
     - r-formula >=1.2_1
     - r-inum >=1.0_0
     - r-libcoin >=1.0_0
     - r-mvtnorm
     - r-rpart >=4.1_11
     - r-survival
-
   run:
-    - r-base          # r-libcoin requires
+    - r-base
+    - {{native}}gcc-libs         # [win]
     - r-formula >=1.2_1
     - r-inum >=1.0_0
     - r-libcoin >=1.0_0
@@ -47,7 +50,7 @@ requirements:
 
 test:
   commands:
-    - $R -e "library('partykit')"  # [not win]
+    - $R -e "library('partykit')"           # [not win]
     - "\"%R%\" -e \"library('partykit')\""  # [win]
 
 about:
@@ -60,15 +63,15 @@ about:
     new and improved reimplementations of conditional inference trees (ctree()) and
     model-based recursive partitioning (mob()) from the 'party' package are provided
     based on the new infrastructure. A description of this package was published by
-    Hothorn and Zeileis (2015).
+    Hothorn and Zeileis (2015) <http://jmlr.org/papers/v16/hothorn15a.html>.
   license_family: GPL3
   license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'  # [unix]
   license_file: '{{ environ["PREFIX"] }}\R\share\licenses\GPL-3'  # [win]
 
 extra:
   recipe-maintainers:
-    - cbrueffer
     - johanneskoester
     - bgruening
     - daler
     - jdblischak
+    - cbrueffer
