@@ -31,7 +31,7 @@ requirements:
     - {{posix}}coreutils         # [win]
     - {{posix}}zip               # [win]
   host:
-    - r-base
+    - r-base <3.5
     - r-formula >=1.2_1
     - r-inum >=1.0_0
     - r-libcoin >=1.0_0
@@ -39,7 +39,7 @@ requirements:
     - r-rpart >=4.1_11
     - r-survival
   run:
-    - r-base
+    - r-base <3.5
     - {{native}}gcc-libs         # [win]
     - r-formula >=1.2_1
     - r-inum >=1.0_0
