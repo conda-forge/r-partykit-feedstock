@@ -1,4 +1,4 @@
-{% set version = '1.2-4' %}
+{% set version = '1.2-5' %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,18 +10,18 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/partykit_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/partykit/partykit_{{ version }}.tar.gz
-  sha256: d6aff810154d7b11ee75adf6744b774f7963f67b89ffe5c87f113a04417e75ba
+  sha256: f48e30790f93fa5d03e68e8ce71ce33d009d107d46d45d85da2016b38b27629c
 
 build:
   merge_build_host: True  # [win]
-  number: 1
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
 
 requirements:
   build:
-    - {{ compiler('c') }}        # [not win]
+    - {{ compiler('c') }}              # [not win]
     - {{ compiler('m2w64_c') }}        # [win]
     - {{posix}}filesystem        # [win]
     - {{posix}}make
@@ -63,7 +63,9 @@ about:
     based on the new infrastructure. A description of this package was published by
     Hothorn and Zeileis (2015) <http://jmlr.org/papers/v16/hothorn15a.html>.
   license_family: GPL3
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
+  license_file:
+    - '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'
+    - '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
 
 extra:
   recipe-maintainers:
@@ -71,8 +73,8 @@ extra:
 
 # Package: partykit
 # Title: A Toolkit for Recursive Partytioning
-# Date: 2019-05-17
-# Version: 1.2-4
+# Date: 2019-07-17
+# Version: 1.2-5
 # Authors@R: c(person(given = "Torsten", family = "Hothorn", role = c("aut", "cre"), email = "Torsten.Hothorn@R-project.org", comment = c(ORCID = "0000-0001-8301-0471")), person(given = "Heidi", family = "Seibold", role = "ctb", email = "heidi@seibold.co", comment = c(ORCID = "0000-0002-8960-9642")), person(given = "Achim", family = "Zeileis", role = "aut", email = "Achim.Zeileis@R-project.org", comment = c(ORCID = "0000-0003-0918-3766")))
 # Description: A toolkit with infrastructure for representing, summarizing, and visualizing tree-structured regression and classification models. This unified infrastructure can be used for reading/coercing tree models from different sources ('rpart', 'RWeka', 'PMML') yielding objects that share functionality for print()/plot()/predict() methods. Furthermore, new and improved reimplementations of conditional inference trees (ctree()) and model-based recursive partitioning (mob()) from the 'party' package are provided based on the new infrastructure. A description of this package was published by Hothorn and Zeileis (2015) <http://jmlr.org/papers/v16/hothorn15a.html>.
 # Depends: R (>= 3.1.0), graphics, grid, libcoin (>= 1.0-0), mvtnorm
@@ -83,8 +85,8 @@ extra:
 # URL: http://partykit.R-Forge.R-project.org/partykit
 # RoxygenNote: 6.1.1
 # NeedsCompilation: yes
-# Packaged: 2019-05-17 08:35:42 UTC; hothorn
+# Packaged: 2019-07-18 07:54:50 UTC; hothorn
 # Author: Torsten Hothorn [aut, cre] (<https://orcid.org/0000-0001-8301-0471>), Heidi Seibold [ctb] (<https://orcid.org/0000-0002-8960-9642>), Achim Zeileis [aut] (<https://orcid.org/0000-0003-0918-3766>)
 # Maintainer: Torsten Hothorn <Torsten.Hothorn@R-project.org>
 # Repository: CRAN
-# Date/Publication: 2019-05-17 14:30:03 UTC
+# Date/Publication: 2019-07-18 11:20:05 UTC
