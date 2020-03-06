@@ -1,4 +1,4 @@
-{% set version = '1.2-6' %}
+{% set version = "1.2-7" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,10 +10,10 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/partykit_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/partykit/partykit_{{ version }}.tar.gz
-  sha256: b54f9281805efb4c6887de857216c06136ae26a70207a8f1e6f99c74559cb130
+  sha256: 5c993c729c2975095eb27e6363eeb1c8a8ba22035f226f598af9d43a4ca312c1
 
 build:
-  merge_build_host: True  # [win]
+  merge_build_host: true  # [win]
   number: 0
   rpaths:
     - lib/R/lib/
@@ -56,18 +56,14 @@ test:
 about:
   home: http://partykit.R-Forge.R-project.org/partykit
   license: GPL-2 | GPL-3
-  summary: A toolkit with infrastructure for representing, summarizing, and visualizing tree-structured
-    regression and classification models. This unified infrastructure can be used for
-    reading/coercing tree models from different sources ('rpart', 'RWeka', 'PMML') yielding
-    objects that share functionality for print()/plot()/predict() methods. Furthermore,
-    new and improved reimplementations of conditional inference trees (ctree()) and
-    model-based recursive partitioning (mob()) from the 'party' package are provided
-    based on the new infrastructure. A description of this package was published by
-    Hothorn and Zeileis (2015) <http://jmlr.org/papers/v16/hothorn15a.html>.
+  summary: A toolkit with infrastructure for representing, summarizing, and visualizing tree-structured regression and classification models. This unified infrastructure
+    can be used for reading/coercing tree models from different sources ('rpart', 'RWeka', 'PMML') yielding objects that share functionality for print()/plot()/predict()
+    methods. Furthermore, new and improved reimplementations of conditional inference trees (ctree()) and model-based recursive partitioning (mob()) from the 'party'
+    package are provided based on the new infrastructure. A description of this package was published by Hothorn and Zeileis (2015) <http://jmlr.org/papers/v16/hothorn15a.html>.
   license_family: GPL3
   license_file:
-    - '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'
-    - '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
+    - {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2
+    - {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3
 
 extra:
   recipe-maintainers:
