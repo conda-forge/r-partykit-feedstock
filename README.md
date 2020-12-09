@@ -3,7 +3,7 @@ About r-partykit
 
 Home: http://partykit.R-Forge.R-project.org/partykit
 
-Package license: GPL-2 | GPL-3
+Package license: GPL-2.0-or-later
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-partykit-feedstock/blob/master/LICENSE.txt)
 
