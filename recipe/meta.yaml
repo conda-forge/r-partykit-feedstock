@@ -1,4 +1,4 @@
-{% set version = "1.2-19" %}
+{% set version = "1.2-20" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,7 +10,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/partykit_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/partykit/partykit_{{ version }}.tar.gz
-  sha256: e48e9aaf335fa00aca36703a08a5bb37e13f5e046d0d8c3292f3166795824355
+  sha256: 63509aa3ed2d7417ad284c037cef66bc837fdb7a97967957e79b9fee8ed2e0da
 
 build:
   merge_build_host: true  # [win]
