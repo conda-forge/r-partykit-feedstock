@@ -28,7 +28,6 @@ requirements:
     - r-inum                     # [build_platform != target_platform]
     - r-libcoin                  # [build_platform != target_platform]
     - r-mvtnorm                  # [build_platform != target_platform]
-    - r-party                    # [build_platform != target_platform]
     - r-rpart                    # [build_platform != target_platform]
     - r-survival                 # [build_platform != target_platform]
     - {{ compiler('c') }}        # [not win]
@@ -46,7 +45,6 @@ requirements:
     - r-inum >=1.0_0
     - r-libcoin >=1.0_0
     - r-mvtnorm
-    - r-party >=1.3_0
     - r-rpart >=4.1_11
     - r-survival
   run:
@@ -55,7 +53,6 @@ requirements:
     - r-inum >=1.0_0
     - r-libcoin >=1.0_0
     - r-mvtnorm
-    - r-party >=1.3_0
     - r-rpart >=4.1_11
     - r-survival
 
