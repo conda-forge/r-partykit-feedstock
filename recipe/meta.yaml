@@ -1,4 +1,4 @@
-{% set version = "1.2-26" %}
+{% set version = "1.2-27" %}
 {% set posix = 'm2-' if win else '' %}
 
 package:
@@ -9,7 +9,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/partykit_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/partykit/partykit_{{ version }}.tar.gz
-  sha256: f752ec9e54f173450c48c2ec9b6260ff4e7fe4a04ed1550083381e949e5f715e
+  sha256: 8bf717d81737a94500e971f7f8c7db1d44b7877a7986ee6bd5bd80f5446e2187
 
 build:
   number: 0
